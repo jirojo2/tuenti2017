@@ -1,0 +1,7 @@
+.vscode/
+graphs-*/
+*.zip
+*.pdf
+*.png
+*.edgelist
+*.exe

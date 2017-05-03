@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<!-- saved from url=(0034)https://contest.tuenti.net/Contest -->
+<html class="no-js"><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width">
+
+	<link rel="icon" href="https://contest.tuenti.net/favicon.ico" type="image/x-icon">
+
+	<link rel="stylesheet" href="./challenge_files/normalize.css">
+	<link rel="stylesheet" href="./challenge_files/contest.css">
+	<link rel="stylesheet" href="./challenge_files/countdown.css">
+	<link rel="stylesheet" href="./challenge_files/css">
+
+	<!--[if lt IE 9]>
+		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
+	<script type="text/javascript" async="" src="./challenge_files/ga.js.descarga"></script><script type="text/javascript" src="./challenge_files/widgets.js.descarga"></script>
+	<script type="text/javascript" src="./challenge_files/jquery-2.1.3.min.js.descarga"></script>
+	<script type="text/javascript" src="./challenge_files/jquery.countdown.min.js.descarga"></script>
+	<script type="text/javascript" src="./challenge_files/lodash.min.js.descarga"></script>
+	<script type="text/javascript" src="./challenge_files/countdown.js.descarga"></script>
+
+	<title>Tuenti Challenge 7</title>
+</head>
+
+<body>
+	<header>
+		<div class="grid">
+			<h1 class="logo h-left"><a href="https://contest.tuenti.net/">Tuenti Challenge 7</a></h1>
+			<nav class="h-right">
+				<ul>
+					<li class="none"><a href="https://contest.tuenti.net/">Home</a></li>
+					<li class="none"><a href="https://contest.tuenti.net/Info/about">Info</a></li>
+					<li class="active"><a href="https://contest.tuenti.net/Challenges">Challenges</a></li>
+					<li class="none"><a href="https://contest.tuenti.net/Info/past">Past editions</a></li>
+										<li class="none"><a href="https://contest.tuenti.net/Stats">Ranking</a></li>
+																<li class="form">
+							<form name="logout" action="https://contest.tuenti.net/Login/logout" method="post"><input type="hidden" name="csrf" value="fd59c2cd31b3b9f62f0b9211ac0eea0e">								<button type="submit" tabindex="4" class="">
+									<span>Logout</span>
+								</button>
+							</form>
+						</li>
+									</ul>
+			</nav>
+		</div>
+	</header>
+<div class="content">
+<div class="grid">
+<div class="problem">
+
+<div class="problem-section">
+	<h2><strong>Challenge 5</strong> - Ghost in the HTTP</h2>
+	<div style="text-align: center; font-size: 20px; padding: 32px">
+
+<p>
+    <a href="https://52.49.91.111:8443/"><img src="./challenge_files/ghost-in-the-http.jpg"></a>
+</p>
+<p>
+    <a href="https://52.49.91.111:8443/">https://52.49.91.111:8443</a>
+</p>
+
+<p>
+	<strong>NOTE:</strong> In this level, the output for the submit phase is the same as the output for the test phase.
+</p>
+</div>
+
+<div class="problem-section">
+	<h2>Test &amp; submit your code</h2>
+	<p>We provide a form to test and submit your code. You need to pass the test phase before attempting the submit phase.</p>
+
+	<h3>Test your program</h3>
+	<div class="group">
+		<div id="test-success" class="success hide">
+		  You have passed the test phase :-)
+		</div>
+		<div id="form-test-error" class="error hide"></div>
+		<div id="form-test-output" class="hide"><div class="submit-feedback"></div></div>
+		<form id="form-test" name="form-test" action="https://contest.tuenti.net/Solver/test" method="post" enctype="multipart/form-data">
+			<input type="hidden" name="token" value="-54HXlJfc4U2vTI9QrwS">
+			<p><a href="https://contest.tuenti.net/Solver/testInput?token=-54HXlJfc4U2vTI9QrwS" class="icon-download">Download test input</a></p>
+			<p>Program output:</p>
+			<p><input type="file" name="output" id="output"></p>
+			<p><button>Submit test output</button></p>
+		</form>
+	</div>
+
+	<p>A nice output will tell you if your program got the right solution or not. You can try as many times as you need.</p>
+
+	<h3>Submit your program to the challenge</h3>
+	<div id="submit-phase" class="hide">
+		<div class="group">
+		  <div id="form-submit-error" class="error hide"></div>
+		  <form id="form-submit">
+			<input type="hidden" name="token" value="-54HXlJfc4U2vTI9QrwS">
+		  	<p><a href="https://contest.tuenti.net/Solver/submitInput?token=-54HXlJfc4U2vTI9QrwS" class="icon-download">Download input</a></p>
+			<p>Program output:</p>
+			<p><input type="file" name="output" id="output"></p>
+			<p>Source code:</p>
+			<p><input type="file" name="source" id="source"></p>
+			<p><button>Submit output</button></p>
+		  </form>
+		</div>
+	</div>
+
+	<div id="submit-phase-empty" class="error">
+	  You have not solved the test phase yet!
+	</div>
+
+	<script>
+	$(function () {
+		var formatOutput = function (text) {
+			return text.trim().split('\n').map(function (line) {
+				var klass = '';
+				if (line.match(/^Line\s+\d+\s+\[WRONG\]/)) {
+					klass = ' class="feedback-line-error"';
+				} else if (line.match(/^Line\s+\d+\s+\[OK!\]/)) {
+					klass = ' class="feedback-line-ok"';
+				}
+				return '<div' + klass + '>' + $('<div />').text(line).html() + '</div>';
+			}).concat('\n');
+		};
+		$('#form-test').on('submit', function(e) {
+			e.preventDefault();
+			var formData = new FormData($('#form-test')[0]);
+			var error = function(content) {
+				var $error = $('#form-test-error');
+				$error.html(content);
+				$error.removeClass('hide');
+			};
+			$.ajax("/Solver/test", {
+				type: 'post',
+				data: formData,
+				processData: false,
+				contentType: false,
+				dataType: 'json'
+			}).done(function(data) {
+				$('#form-test-error').addClass('hide');
+				if (data.error) {
+					if (!data.content && !data.output) {
+						location.reload();
+					}
+					if (data.content) {
+						error(data.content);
+					}
+					if (data.output) {
+						$('#form-test-output .submit-feedback').html(formatOutput(data.output));
+						$output = $('#form-test-output');
+						$output.removeClass('hide');
+						$output.removeClass('success');
+						$output.addClass('error');
+					} else {
+						$('#form-test-output').addClass('hide');
+					}
+				} else {
+					if (data.output) {
+						$('#form-test-output .submit-feedback').html(formatOutput(data.output));
+						$output = $('#form-test-output');
+						$output.removeClass('hide');
+						$output.removeClass('error');
+						$output.addClass('success');
+						$('#test-success').removeClass('hide');
+						$('#submit-phase').removeClass('hide');
+						$('#submit-phase').removeClass('hide');
+						$('#submit-phase-empty').addClass('hide');
+					} else {
+						$('#form-test-output').addClass('hide');
+					}
+				}
+			}).fail(function() {
+				error("Error uploading test output. Please try again");
+			});
+			return false;
+		});
+		$('#form-submit').on('submit', function(e) {
+			e.preventDefault();
+			var formData = new FormData($('#form-submit')[0]);
+			var error = function(content) {
+				var $error = $('#form-submit-error');
+				$error.html(content);
+				$error.removeClass('hide');
+			};
+			$.ajax("/Solver/submit", {
+				type: 'post',
+				data: formData,
+				processData: false,
+				contentType: false,
+				dataType: 'json'
+			}).done(function(data) {
+				$('#form-test-error').addClass('hide');
+				if (data.error) {
+					error(data.content);
+				} else {
+					document.location=document.location;
+				}
+			}).fail(function() {
+				error("Error uploading submit output and source. Please try again");
+			});
+			return false;
+		});
+	});
+	</script>
+	<p>Note that you first need to solve the test phase before submitting the code. During the submit phase, in some problems, we
+	might give your program harder questions, so try to make your program failsafe.</p>
+	<p><strong>Important:</strong> In this phase, you must provide the source code used to solve the challenge and, if necessary, a brief explanation of how you solved it.</p>
+	<p>Remember <b>you can only submit once!</b> Once your solution is submitted you won't be able to amend it to fix issues or make it faster,
+	so please be sure your solution is finished before submitting it.</p>
+	<p>If you have any doubts, please check the <a href="https://contest.tuenti.net/Info/about">info section</a>.</p>
+</div>
+
+<div class="problem-section">
+	<h2>Go ahead</h2>
+	<h3>I'm done! :)</h3>
+	<p>Once you have submitted your code, the page should be automatically refreshed so you can continue to next challenge.</p>
+	<h3>I'm stuck! :(</h3>
+	<p>Be sure you follow the <a href="http://twitter.com/#!/TuentiEng" target="_blank">Tuenti Engineering</a> twitter for updates and
+	possible hints during the contest.</p>
+	<p>If this challenge is too hard and you are blocked, you will be able to skip it after two hours. Note that
+	<strong>you won't be able to complete it later</strong>, and you have a limited number of challenges to skip.</p>
+	<p>Finally, if you run out of skips but are still really stuck with one problem, you will be able to skip it after 24 hours.</p>
+	<br>
+	<h3>Challenge status:</h3>
+	<div id="status">
+		<form id="skip_form" action="https://contest.tuenti.net/Contest/skip" method="post"><input type="hidden" name="csrf" value="fd59c2cd31b3b9f62f0b9211ac0eea0e"></form>
+<table class="status">
+<tbody>
+<tr>
+	<th>Test case</th>
+	<td><span>
+		Not done	</span></td>
+</tr>
+<tr>
+	<th>Skip</th>
+	<td>
+        <button type="submit" tabindex="4" class="btn btn-warning" onclick="if (confirm(&#39;Are you sure you want to skip this challenge?\n\nYou won\&#39;t be able to complete it later!!!&#39;)) { document.getElementById(&#39;skip_form&#39;).submit() }">Skip this challenge :(</button>
+		<br>
+	(You have 2 skips)
+		</td>
+</tr>
+
+</tbody>
+</table>
+	</div>
+	<br>
+	<br>
+	<script type="text/javascript">
+	function refreshStatus() {
+		var el = document.getElementById('status');
+		el.innerHTML = '<div class="center"><img src="/resources/loading.gif" style="border:0" /></div>';
+		var req = new XMLHttpRequest();
+		req.open('GET', '/Contest/status?id=5', true);
+		req.onreadystatechange	= function() {
+			if (this.readyState == XMLHttpRequest.DONE && this.status == 200) {
+				el.innerHTML = this.responseText;
+			}
+		}
+		req.send(null);
+	}
+	</script>
+	<div class="center">
+		<button type="submit" tabindex="4" class="btn" onclick="refreshStatus()">
+			Refresh status
+		</button>
+	</div>
+</div>
+
+</div>
+</div>
+</div>
+	<footer>
+		<div class="grid">
+			<p class="h-left">
+				Tweet about this! <a href="http://twitter.com/intent/tweet?text=%23TuentiChallenge7" target="_blank">#TuentiChallenge7</a>
+			</p>
+			<ul class="h-right scl-menu">
+				<li>
+					<a href="https://twitter.com/Tuentieng" class="twitter-follow-button" data-show-count="false" data-lang="es" data-show-screen-name="false" data-dnt="true" target="_blank">Follow @TuentiEng</a>
+				</li>
+			</ul>
+		</div>
+	</footer>
+	<script type="text/javascript">
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-40515046-1']);
+	  _gaq.push(['_trackPageview']);
+
+	  (function() {
+	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
+	</script>
+
+
+
+</div></body></html>

@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<!-- saved from url=(0034)https://contest.tuenti.net/Contest -->
+<html class="no-js"><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width">
+
+	<link rel="icon" href="https://contest.tuenti.net/favicon.ico" type="image/x-icon">
+
+	<link rel="stylesheet" href="./challenge_files/normalize.css">
+	<link rel="stylesheet" href="./challenge_files/contest.css">
+	<link rel="stylesheet" href="./challenge_files/countdown.css">
+	<link rel="stylesheet" href="./challenge_files/css">
+
+	<!--[if lt IE 9]>
+		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
+	<script type="text/javascript" async="" src="./challenge_files/ga.js.descarga"></script><script type="text/javascript" src="./challenge_files/widgets.js.descarga"></script>
+	<script type="text/javascript" src="./challenge_files/jquery-2.1.3.min.js.descarga"></script>
+	<script type="text/javascript" src="./challenge_files/jquery.countdown.min.js.descarga"></script>
+	<script type="text/javascript" src="./challenge_files/lodash.min.js.descarga"></script>
+	<script type="text/javascript" src="./challenge_files/countdown.js.descarga"></script>
+
+	<title>Tuenti Challenge 7</title>
+</head>
+
+<body>
+	<header>
+		<div class="grid">
+			<h1 class="logo h-left"><a href="https://contest.tuenti.net/">Tuenti Challenge 7</a></h1>
+			<nav class="h-right">
+				<ul>
+					<li class="none"><a href="https://contest.tuenti.net/">Home</a></li>
+					<li class="none"><a href="https://contest.tuenti.net/Info/about">Info</a></li>
+					<li class="active"><a href="https://contest.tuenti.net/Challenges">Challenges</a></li>
+					<li class="none"><a href="https://contest.tuenti.net/Info/past">Past editions</a></li>
+										<li class="none"><a href="https://contest.tuenti.net/Stats">Ranking</a></li>
+																<li class="form">
+							<form name="logout" action="https://contest.tuenti.net/Login/logout" method="post"><input type="hidden" name="csrf" value="030b2db3638ce29849bf43f7735835b2">								<button type="submit" tabindex="4" class="">
+									<span>Logout</span>
+								</button>
+							</form>
+						</li>
+									</ul>
+			</nav>
+		</div>
+	</header>
+<div class="content">
+<div class="grid">
+<div class="problem">
+
+<div class="problem-section">
+	<h2><strong>Challenge 6</strong> - The Tower</h2>
+	<style>
+    sup {
+        vertical-align: super;
+        font-size: smaller;
+    }
+</style>
+
+<p>
+	<img style="display: block; margin: 40px auto" src="./challenge_files/tower.jpg" alt="tower">
+</p>
+
+<p>The Tower is made up of floors, each as wide as a continent, which are stacked infinitely one on top of another. Every regular starts at the second floor, the Floor of Test, and becomes a Ranker when they reach the last floor explored by Jahad and the Ten Great Families. To advance from one floor to the next, a regular has to pass a test imposed by the Guardian of that floor. Climbing The Tower is harder than it sounds and, of the millions of chosen regulars only a select few succeed in reaching the top, taking centuries on average to do so.</p>
+
+<p>The Tower is all and everything and the answer to every question lies at its top. No one knows what may exist outside of it. No one, that is, except those who come from The Outside. Baam is an irregular from the outside world who opened the Door at the first floor, following his friend Rachel. As a Guide, you know all the ways through The Tower. You can see Baam's way too, how it will change the future and bring change to The Tower. It is your duty, as a Guide of The Tower, to help him become a Ranker and fulfill his destiny.</p>
+
+<p>Every floor is connected to the next one and it takes Baam <b>n</b> years to pass the test of the <b>n</b>th floor and move on to the <b>n</b>+1th floor. There are some shortcuts that not everyone is brave (or foolish) enough to take, such as the Hell Train. To take a shortcut, one also has to take a test. You want Baam to become a Ranker as soon as possible, so you must find the fastest way to reach the last explored floor of The Tower. Once Baam arrives on a floor, he can go back to any lower floor to take a shortcut, and the amount of time taken to move between floors is negligible compared to the amount of time that Baam needs to pass a test.</p>
+
+<p>Now, you may not understand everything written here, but don't worry; for now, you just need to discover how long it will take Baam to become a Ranker if he follows the optimum path in The Tower.</p>
+
+<h3>Input</h3>
+<p>The first line will contain an integer <b>C</b>, the number of cases for our problem.<br>
+Each case consists of a line with two integers <b>F</b> and <b>S</b>, the last explored floor of The Tower and the number of shortcuts. A set of <b>S</b> lines with three integers <b>A</b>, <b>B</b> and <b>Y</b> follows, each indicating a shortcut from floor <b>A</b> to floor <b>B</b> with a test that takes Baam <b>Y</b> years to pass.<br></p>
+
+<h3>Output</h3>
+<p>For each case, a line starting with "Case #x: " followed by the years it will take Baam to become a Ranker. Every line is followed by a new line character.</p>
+
+<h3>Examples</h3>
+
+<table style="width:100%"><tbody><tr>
+<td><pre>Case 1:
+
+2 0
+
+
+
+
+
+
+
+
+</pre></td><td><pre>Case 2:
+
+4 2
+2 4 5
+1 3 3
+
+
+
+
+
+
+</pre></td>
+<td><pre>Case 3:
+
+9 3
+3 5 2
+4 8 6
+5 8 20
+
+
+
+
+
+</pre></td>
+<td><pre>Case 4:
+
+10 8
+1 6 6
+2 4 1
+3 5 5
+3 6 5
+7 8 3
+7 10 10
+2 6 2
+4 7 4
+</pre></td>
+</tr></tbody></table>
+
+<p>In Case 1, there are only two floors with no shortcuts. The only path is (1 → 2), taking 1 year.<br>
+In Case 2, (1 → 2 → 3 → 4), (1 → 3 → 4) and (1 → 2 → 4) take 6 years.<br>
+In Case 3, the fastest path is (1 → 2 → 3 → 5 → 8 → 9), taking 19 years. Note that Baam will need to go down to the 4th floor after arriving at the 5th in order to take the shortcut (4 → 8).<br>
+In Case 4, the fastest path takes 16 years.</p>
+
+<h3>Limits</h3>
+
+<ul>
+<li>1 ≤ <b>F</b> ≤ 2<sup>31</sup></li>
+<li>0 ≤ <b>Y</b> ≤ 2<sup>31</sup></li>
+<li>0 ≤ <b>S</b> ≤ 2500</li>
+</ul>
+
+<h3>Sample Input</h3>
+
+<pre>4
+2 0
+4 2
+2 4 5
+1 3 3
+9 3
+3 5 2
+4 8 6
+5 8 20
+10 8
+1 6 6
+2 4 1
+3 5 5
+3 6 5
+7 8 3
+7 10 10
+2 6 2
+4 7 4
+</pre>
+
+<h3>Sample Output</h3>
+
+<pre>Case #1: 1
+Case #2: 6
+Case #3: 19
+Case #4: 16
+</pre>
+
+
+</div>
+
+<div class="problem-section">
+	<h2>Test &amp; submit your code</h2>
+	<p>We provide a form to test and submit your code. You need to pass the test phase before attempting the submit phase.</p>
+
+	<h3>Test your program</h3>
+	<div class="group">
+		<div id="test-success" class="success">
+		  You have passed the test phase :-)
+		</div>
+		<div id="form-test-error" class="error hide">Error uploading test output. Please try again</div>
+		<div id="form-test-output" class="success"><div class="submit-feedback"><div class="feedback-line-ok">Line 1  [OK!]  : Case #1: 0</div><div class="feedback-line-ok">Line 2  [OK!]  : Case #2: 1</div><div class="feedback-line-ok">Line 3  [OK!]  : Case #3: 0</div><div class="feedback-line-ok">Line 4  [OK!]  : Case #4: 4</div><div class="feedback-line-ok">Line 5  [OK!]  : Case #5: 16</div><div class="feedback-line-ok">Line 6  [OK!]  : Case #6: 6</div><div class="feedback-line-ok">Line 7  [OK!]  : Case #7: 6</div><div class="feedback-line-ok">Line 8  [OK!]  : Case #8: 19</div><div class="feedback-line-ok">Line 9  [OK!]  : Case #9: 26</div><div class="feedback-line-ok">Line 10  [OK!]  : Case #10: 14</div><div class="feedback-line-ok">Line 11  [OK!]  : Case #11: 29</div><div class="feedback-line-ok">Line 12  [OK!]  : Case #12: 16</div><div class="feedback-line-ok">Line 13  [OK!]  : Case #13: 13</div><div class="feedback-line-ok">Line 14  [OK!]  : Case #14: 7</div><div class="feedback-line-ok">Line 15  [OK!]  : Case #15: 8</div><div class="feedback-line-ok">Line 16  [OK!]  : Case #16: 9</div><div class="feedback-line-ok">Line 17  [OK!]  : Case #17: 24</div><div class="feedback-line-ok">Line 18  [OK!]  : Case #18: 12</div><div class="feedback-line-ok">Line 19  [OK!]  : Case #19: 14</div><div class="feedback-line-ok">Line 20  [OK!]  : Case #20: 25</div><div class="feedback-line-ok">Line 21  [OK!]  : Case #21: 19</div><div class="feedback-line-ok">Line 22  [OK!]  : Case #22: 15</div><div class="feedback-line-ok">Line 23  [OK!]  : Case #23: 20</div><div class="feedback-line-ok">Line 24  [OK!]  : Case #24: 10</div><div class="feedback-line-ok">Line 25  [OK!]  : Case #25: 8</div><div class="feedback-line-ok">Line 26  [OK!]  : Case #26: 20</div><div class="feedback-line-ok">Line 27  [OK!]  : Case #27: 3</div><div class="feedback-line-ok">Line 28  [OK!]  : Case #28: 31</div><div class="feedback-line-ok">Line 29  [OK!]  : Case #29: 34</div><div class="feedback-line-ok">Line 30  [OK!]  : Case #30: 68</div><div class="feedback-line-ok">Line 31  [OK!]  : Case #31: 95</div><div class="feedback-line-ok">Line 32  [OK!]  : Case #32: 120</div><div class="feedback-line-ok">Line 33  [OK!]  : Case #33: 26</div><div class="feedback-line-ok">Line 34  [OK!]  : Case #34: 27</div><div class="feedback-line-ok">Line 35  [OK!]  : Case #35: 92</div><div class="feedback-line-ok">Line 36  [OK!]  : Case #36: 83</div><div class="feedback-line-ok">Line 37  [OK!]  : Case #37: 61</div><div class="feedback-line-ok">Line 38  [OK!]  : Case #38: 79</div><div class="feedback-line-ok">Line 39  [OK!]  : Case #39: 74</div><div class="feedback-line-ok">Line 40  [OK!]  : Case #40: 83</div><div class="feedback-line-ok">Line 41  [OK!]  : Case #41: 47</div><div class="feedback-line-ok">Line 42  [OK!]  : Case #42: 35</div><div class="feedback-line-ok">Line 43  [OK!]  : Case #43: 102</div><div class="feedback-line-ok">Line 44  [OK!]  : Case #44: 50</div><div class="feedback-line-ok">Line 45  [OK!]  : Case #45: 85</div><div class="feedback-line-ok">Line 46  [OK!]  : Case #46: 120</div><div class="feedback-line-ok">Line 47  [OK!]  : Case #47: 0</div><div class="feedback-line-ok">Line 48  [OK!]  : Case #48: 190</div><div class="feedback-line-ok">Line 49  [OK!]  : Case #49: 261</div><div class="feedback-line-ok">Line 50  [OK!]  : Case #50: 162</div><div class="feedback-line-ok">Line 51  [OK!]  : Case #51: 415</div><div class="feedback-line-ok">Line 52  [OK!]  : Case #52: 366</div><div class="feedback-line-ok">Line 53  [OK!]  : Case #53: 506</div><div class="feedback-line-ok">Line 54  [OK!]  : Case #54: 116</div><div class="feedback-line-ok">Line 55  [OK!]  : Case #55: 743</div><div class="feedback-line-ok">Line 56  [OK!]  : Case #56: 186</div><div class="feedback-line-ok">Line 57  [OK!]  : Case #57: 0</div><div class="feedback-line-ok">Line 58  [OK!]  : Case #58: 1225</div><div class="feedback-line-ok">Line 59  [OK!]  : Case #59: 5656</div><div class="feedback-line-ok">Line 60  [OK!]  : Case #60: 4805</div><div class="feedback-line-ok">Line 61  [OK!]  : Case #61: 3679</div><div class="feedback-line-ok">Line 62  [OK!]  : Case #62: 10635</div><div class="feedback-line-ok">Line 63  [OK!]  : Case #63: 7461</div><div class="feedback-line-ok">Line 64  [OK!]  : Case #64: 2833</div><div class="feedback-line-ok">Line 65  [OK!]  : Case #65: 4313</div><div class="feedback-line-ok">Line 66  [OK!]  : Case #66: 8150</div><div class="feedback-line-ok">Line 67  [OK!]  : Case #67: 206</div><div class="feedback-line-ok">Line 68  [OK!]  : Case #68: 15668</div>
+</div></div>
+		<form id="form-test" name="form-test" action="https://contest.tuenti.net/Solver/test" method="post" enctype="multipart/form-data">
+			<input type="hidden" name="token" value="4mkFzO_0YfgpeME9QrwS">
+			<p><a href="https://contest.tuenti.net/Solver/testInput?token=4mkFzO_0YfgpeME9QrwS" class="icon-download">Download test input</a></p>
+			<p>Program output:</p>
+			<p><input type="file" name="output" id="output"></p>
+			<p><button>Submit test output</button></p>
+		</form>
+	</div>
+
+	<p>A nice output will tell you if your program got the right solution or not. You can try as many times as you need.</p>
+
+	<h3>Submit your program to the challenge</h3>
+	<div id="submit-phase" class="">
+		<div class="group">
+		  <div id="form-submit-error" class="error hide"></div>
+		  <form id="form-submit">
+			<input type="hidden" name="token" value="4mkFzO_0YfgpeME9QrwS">
+		  	<p><a href="https://contest.tuenti.net/Solver/submitInput?token=4mkFzO_0YfgpeME9QrwS" class="icon-download">Download input</a></p>
+			<p>Program output:</p>
+			<p><input type="file" name="output" id="output"></p>
+			<p>Source code:</p>
+			<p><input type="file" name="source" id="source"></p>
+			<p><button>Submit output</button></p>
+		  </form>
+		</div>
+	</div>
+
+	<div id="submit-phase-empty" class="error hide">
+	  You have not solved the test phase yet!
+	</div>
+
+	<script>
+	$(function () {
+		var formatOutput = function (text) {
+			return text.trim().split('\n').map(function (line) {
+				var klass = '';
+				if (line.match(/^Line\s+\d+\s+\[WRONG\]/)) {
+					klass = ' class="feedback-line-error"';
+				} else if (line.match(/^Line\s+\d+\s+\[OK!\]/)) {
+					klass = ' class="feedback-line-ok"';
+				}
+				return '<div' + klass + '>' + $('<div />').text(line).html() + '</div>';
+			}).concat('\n');
+		};
+		$('#form-test').on('submit', function(e) {
+			e.preventDefault();
+			var formData = new FormData($('#form-test')[0]);
+			var error = function(content) {
+				var $error = $('#form-test-error');
+				$error.html(content);
+				$error.removeClass('hide');
+			};
+			$.ajax("/Solver/test", {
+				type: 'post',
+				data: formData,
+				processData: false,
+				contentType: false,
+				dataType: 'json'
+			}).done(function(data) {
+				$('#form-test-error').addClass('hide');
+				if (data.error) {
+					if (!data.content && !data.output) {
+						location.reload();
+					}
+					if (data.content) {
+						error(data.content);
+					}
+					if (data.output) {
+						$('#form-test-output .submit-feedback').html(formatOutput(data.output));
+						$output = $('#form-test-output');
+						$output.removeClass('hide');
+						$output.removeClass('success');
+						$output.addClass('error');
+					} else {
+						$('#form-test-output').addClass('hide');
+					}
+				} else {
+					if (data.output) {
+						$('#form-test-output .submit-feedback').html(formatOutput(data.output));
+						$output = $('#form-test-output');
+						$output.removeClass('hide');
+						$output.removeClass('error');
+						$output.addClass('success');
+						$('#test-success').removeClass('hide');
+						$('#submit-phase').removeClass('hide');
+						$('#submit-phase').removeClass('hide');
+						$('#submit-phase-empty').addClass('hide');
+					} else {
+						$('#form-test-output').addClass('hide');
+					}
+				}
+			}).fail(function() {
+				error("Error uploading test output. Please try again");
+			});
+			return false;
+		});
+		$('#form-submit').on('submit', function(e) {
+			e.preventDefault();
+			var formData = new FormData($('#form-submit')[0]);
+			var error = function(content) {
+				var $error = $('#form-submit-error');
+				$error.html(content);
+				$error.removeClass('hide');
+			};
+			$.ajax("/Solver/submit", {
+				type: 'post',
+				data: formData,
+				processData: false,
+				contentType: false,
+				dataType: 'json'
+			}).done(function(data) {
+				$('#form-test-error').addClass('hide');
+				if (data.error) {
+					error(data.content);
+				} else {
+					document.location=document.location;
+				}
+			}).fail(function() {
+				error("Error uploading submit output and source. Please try again");
+			});
+			return false;
+		});
+	});
+	</script>
+	<p>Note that you first need to solve the test phase before submitting the code. During the submit phase, in some problems, we
+	might give your program harder questions, so try to make your program failsafe.</p>
+	<p><strong>Important:</strong> In this phase, you must provide the source code used to solve the challenge and, if necessary, a brief explanation of how you solved it.</p>
+	<p>Remember <b>you can only submit once!</b> Once your solution is submitted you won't be able to amend it to fix issues or make it faster,
+	so please be sure your solution is finished before submitting it.</p>
+	<p>If you have any doubts, please check the <a href="https://contest.tuenti.net/Info/about">info section</a>.</p>
+</div>
+
+<div class="problem-section">
+	<h2>Go ahead</h2>
+	<h3>I'm done! :)</h3>
+	<p>Once you have submitted your code, the page should be automatically refreshed so you can continue to next challenge.</p>
+	<h3>I'm stuck! :(</h3>
+	<p>Be sure you follow the <a href="http://twitter.com/#!/TuentiEng" target="_blank">Tuenti Engineering</a> twitter for updates and
+	possible hints during the contest.</p>
+	<p>If this challenge is too hard and you are blocked, you will be able to skip it after two hours. Note that
+	<strong>you won't be able to complete it later</strong>, and you have a limited number of challenges to skip.</p>
+	<p>Finally, if you run out of skips but are still really stuck with one problem, you will be able to skip it after 24 hours.</p>
+	<br>
+	<h3>Challenge status:</h3>
+	<div id="status">
+		<form id="skip_form" action="https://contest.tuenti.net/Contest/skip" method="post"><input type="hidden" name="csrf" value="030b2db3638ce29849bf43f7735835b2"></form>
+<table class="status">
+<tbody>
+<tr>
+	<th>Test case</th>
+	<td><span>
+		Not done	</span></td>
+</tr>
+<tr>
+	<th>Skip</th>
+	<td>
+        <button type="submit" tabindex="4" class="btn btn-warning" onclick="if (confirm(&#39;Are you sure you want to skip this challenge?\n\nYou won\&#39;t be able to complete it later!!!&#39;)) { document.getElementById(&#39;skip_form&#39;).submit() }">Skip this challenge :(</button>
+		<br>
+	(You have 2 skips)
+		</td>
+</tr>
+
+</tbody>
+</table>
+	</div>
+	<br>
+	<br>
+	<script type="text/javascript">
+	function refreshStatus() {
+		var el = document.getElementById('status');
+		el.innerHTML = '<div class="center"><img src="/resources/loading.gif" style="border:0" /></div>';
+		var req = new XMLHttpRequest();
+		req.open('GET', '/Contest/status?id=6', true);
+		req.onreadystatechange	= function() {
+			if (this.readyState == XMLHttpRequest.DONE && this.status == 200) {
+				el.innerHTML = this.responseText;
+			}
+		}
+		req.send(null);
+	}
+	</script>
+	<div class="center">
+		<button type="submit" tabindex="4" class="btn" onclick="refreshStatus()">
+			Refresh status
+		</button>
+	</div>
+</div>
+
+</div>
+</div>
+</div>
+	<footer>
+		<div class="grid">
+			<p class="h-left">
+				Tweet about this! <a href="http://twitter.com/intent/tweet?text=%23TuentiChallenge7" target="_blank">#TuentiChallenge7</a>
+			</p>
+			<ul class="h-right scl-menu">
+				<li>
+					<a href="https://twitter.com/Tuentieng" class="twitter-follow-button" data-show-count="false" data-lang="es" data-show-screen-name="false" data-dnt="true" target="_blank">Follow @TuentiEng</a>
+				</li>
+			</ul>
+		</div>
+	</footer>
+	<script type="text/javascript">
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-40515046-1']);
+	  _gaq.push(['_trackPageview']);
+
+	  (function() {
+	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
+	</script>
+
+
+
+</body></html>
